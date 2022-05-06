@@ -19,8 +19,8 @@ module.exports = {
 
   // Notifies the Discord webhook when a submission is created.
   webhook: {
-    id: "971281007602962472",
-    token: "9DCr5q8h1cAakW20wS2fnCKJCD99At01pb--YlOtshil-Xu8QS2aOBlBeundK5W64MYH",
+    id: "",
+    token: "",
   },
 
   dbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/scrapboard',
