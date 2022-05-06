@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/global.css" type="text/css">
+    <link rel="stylesheet" href="/styles/admin.css" type="text/css">
+    <title>admin</title>
+  </head>
+  <body>
+    <div class="adminNav">
+      <div class="adminNavItem">
+        <p><b>Zach's banner admin thing</b></p>
+        <button onclick="window.open('/', '_blank').focus();">Back to home</button>
+      </div>
+      <div class="adminNavItem">
+        Logged in as: 
+        <div class="userCard">
+          <img
+            src="<%= user.avatar %>"
+            alt="pfp"
+          />
+          <%= user.tag %>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin">
+      <div class="adminContent">
+        <div class="adminContent__fabric">
+          <p><b>Preview:</b></p>
+          <canvas id="canvasBanner"></canvas>
+          <button onclick="adminSaveImage()">Save banner image</button>
+          <button onclick="canvas.clear()">Clear selected items...</button>
+          <input 
+            type="file"
+            id="inputImage"
+            accept="image/*"
+          >
+          <button id="submitButton">Submit</button>
+        </div>
+        <div class="adminContent__submissions">
+          <p><b>Submissions:</b> <span id="submissionCount"></span></p>
+          <div id="submissionList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- msg window ~ used through msgWindow.js -->
+    <div id="msgWindow" class="msgWindowParent">
+      <div class="msgWindow__appWindow">
+        <div id="msgWindowTitle" class="msgWindow__header"></div>
+        <div class="msgWindow__content">
+          <div class="msgWindow__text">
+            <p id="msgWindowText"></p>
+          </div>
+          <div class="msgWindow__buttons">
+            <button id="btnMsgWindowClose">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var initialBanner = "<%- banner %>";
+      var submissionData = <%- JSON.stringify(submissions) %>;
+    </script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    <script>const socket = io();</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.4/fabric.min.js"></script>
+    <script src="/scripts/submissionData.js"></script>
+    <script src="/scripts/msgWindow.js"></script>
+    <script src="/scripts/fabric.js"></script>
+    <script src="/scripts/submit.js"></script>
+    <script src="/scripts/adminPreview.js"></script>
+  </body>
+</html>

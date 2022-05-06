@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/global.css" type="text/css">
+    <link rel="stylesheet" href="/styles/home.css" type="text/css">
+    <title>Zach's banner thing</title>
+  </head>
+  <body>
+
+    <!-- 'startBar' - Navbar thing -->
+    <div class="startBar">
+      <div class="startBar__leftItems">
+        <div class="startBar__userButtonParent">
+          <a href="<%= user ? "/logout" : "/login" %>" class="startBar__userButton">
+            <% if (user) { %>
+              <img
+                src="<%= user.avatar %>"
+                alt="pfp"
+              />
+                <%= user.tag %>
+            <% } else { %>
+              <img
+                src="/assets/discord.png"
+                alt="pfp"
+              />
+                SIGN IN TO SUBMIT!
+            <% } %>
+            </a>
+        </div>
+        <div class="startBar__linkParent">
+          <div class="startBar__linkIcons">
+            <a href="https://twitter.com/zacimac" target="_blank">
+              <img
+                src="/assets/twitter.png"
+                alt="twitter"
+              />
+            </a>
+            <a href="https://zachary.lol" target="_blank">
+              <img
+                src="/assets/website.png"
+                alt="website"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="startBar__logoutButton">
+        Hey! :)
+      </div>
+    </div>
+
+    <div class="appView">
+      <div class="appView__header">
+        <div class="appView__header__title">
+          Zach's banner thing
+        </div>
+        <div class="appView__header__button" id="btnAppHelp">
+          ?
+        </div>
+      </div>
+
+      <div class="appView__content">
+        <div class="appView__canvas">
+          <canvas id="canvasBanner"></canvas>
+        </div>
+        <div class="appView__sideMenu">
+          <div class="appView__sideMenu__nav">
+            <span id="smBtn_add" class="active">add</span>
+            <span id="smBtn_submissions">submissions</span>
+          </div>
+          <div class="appView__sideMenu__content">
+            <div class="smPage active" id="smPage_add">
+              <p class="titleText">Welcome to my banner thing</p>
+              <p>&bull; I'm not that creative with my online profiles, so hopefully you can help me out... right?? or you can just advertise stuff if you want idc...</p>
+              <p>&bull; You can add any image you like ~ It's reviewed by me first, so no trying to sneek sus s**t in... please let me keep my eyes.</p>
+              <p>&bull; This thing was made on 1% brain power late at night, if it's broken: <a href="https://twitter.com/zacimac">tweet @ me</a></p>
+    
+              <br />
+              <p class="submissionStatusText" onclick="smPageSelect('submissions')"><b>There are currently <span id="submissionPendingCount">[?]</span> changes waiting to be reviewed.</b></p>
+              <hr />
+              <% if (user) { %>
+                <p>Select an image to add... then position it on the banner!</p>
+                <input 
+                  type="file"
+                  id="inputImage"
+                  accept="image/*"
+                >
+                <hr>
+                <p>Oh btw, I'm only allowing each person to submit a maximum of <b>5 images</b> until I approve/deny them...</p>
+                <button id="submitButton">Submit</button>
+              <% } else { %>
+                <p>You need to sign in to submit images!</p>
+                <p>Authenticate with Discord in the bottom left.</p>
+                <br>
+                <p><i>Also the common internet safety rule, check that you're actually on 'discord.com' if it's asking you to login...</i></p>
+              <% } %>
+            </div>
+            <div class="smPage" id="smPage_submissions">
+              <p class="titleText">Submission logs</p>
+              <p><span class="approved">&#9673;</span> = approved</p>
+              <p><span class="pending">&#9673;</span> = pending</p>
+              <p><span class="denied">&#9673;</span> = denied</p>
+              <p>only shows 10 most recent (so it won't kill ur internet and my server)</p>
+              <hr />
+
+              <div id="submissionItemsParent"></div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- msg window ~ used through msgWindow.js -->
+    <div id="msgWindow" class="msgWindowParent">
+      <div class="msgWindow__appWindow">
+        <div id="msgWindowTitle" class="msgWindow__header"></div>
+        <div class="msgWindow__content">
+          <div class="msgWindow__text">
+            <p id="msgWindowText"></p>
+          </div>
+          <div class="msgWindow__buttons">
+            <button id="btnMsgWindowClose">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    <script>
+      const socket = io();
+      var initialBanner = "<%- banner %>";
+      var submissionData = <%- JSON.stringify(submissions) %>;
+      // App Help Button - may replace with an actual help page later
+      document.getElementById("btnAppHelp")
+        .addEventListener("click", function() {
+          window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", '_blank').focus();
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.4/fabric.min.js"></script>
+    <script src="/scripts/submissionData.js"></script>
+    <script src="/scripts/msgWindow.js"></script>
+    <script src="/scripts/sideMenu.js"></script>
+    <script src="/scripts/fabric.js"></script>
+    <script src="/scripts/submit.js"></script>
+    <script src="/scripts/socket.js"></script>
+  </body>
+</html>

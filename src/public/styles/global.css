@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #008080;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+p {
+  margin: 6px 0;
+}
+
+.startBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c0c0c0;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: solid 2px #ffffff;
+  padding: 2px;
+  z-index: 1000;
+}
+
+.startBar__leftItems {
+  display: flex;
+  flex-direction: row;
+}
+
+.startBar__userButtonParent {
+  border-top: solid 2px #ffffff;
+  border-left: solid 2px #ffffff;
+  border-bottom: solid 2px #000000;
+  border-right: solid 2px #000000;
+}
+
+.startBar__userButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: solid 2px #dfdfdf;
+  border-left: solid 2px #dfdfdf;
+  border-bottom: solid 2px #808080;
+  border-right: solid 2px #808080;
+  padding: 2px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.startBar__userButton img {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+
+.startBar__linkParent {
+  border-left: solid 2px #808080;
+  border-right: solid 2px #fff;
+  margin: 4px 6px;
+}
+
+.startBar__linkIcons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  border-left: solid 2px #fff;
+  border-right: solid 2px #808080;
+}
+
+.startBar__linkIcons a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.startBar__linkIcons img {
+  height: 20px;
+}
+
+.startBar__logoutButton {
+  border-top: solid 2px #808080;
+  border-left: solid 2px #808080;
+  border-bottom: solid 2px #ffffff;
+  border-right: solid 2px #ffffff;
+  background-color: #c0c0c0;
+  padding: 3px 8px;
+}
+
+.msgWindowParent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.msgWindow__appWindow {
+  display: flex;
+  flex-direction: column;
+  background-color: #c0c0c0;
+  box-sizing: border-box;
+  height: auto;
+  width: 500px;
+  top: 30px;
+  left: 3%;
+  border-top: solid 2px #ffffff;
+  border-left: solid 2px #ffffff;
+  border-bottom: solid 2px #000000;
+  border-right: solid 2px #000000;
+}
+
+.msgWindow__header {
+  background-color: #000080;
+  color: #ffffff;
+  padding: 2px 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.msgWindow__content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+.msgWindow__text {
+  padding: 0 10px;
+  font-size: 1.1em;
+}
+
+.msgWindow__buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+#btnMsgWindowClose {
+  border-top: solid 2px #ffffff;
+  border-left: solid 2px #ffffff;
+  border-bottom: solid 2px #000000;
+  border-right: solid 2px #000000;
+  font-size: 1.1em;
+  padding: 4px 14px;
+  font-family: 'Share Tech Mono', monospace;
+  cursor: pointer;
+}
